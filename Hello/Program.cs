@@ -10,7 +10,10 @@ namespace Hello
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("|dsd");
-        }
+            foreach (string names in args)
+            {
+                Console.WriteLine(names);
+            }
+        }   
     }
 }
