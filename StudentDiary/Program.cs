@@ -24,8 +24,6 @@ namespace StudentDiary
                 float rating;
                 bool isFloat = float.TryParse(Console.ReadLine(),out rating);
 
-                
-
                 if (rating == 11)
                 {
                     break;

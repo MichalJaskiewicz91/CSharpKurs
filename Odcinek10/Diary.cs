@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudentDiary
+namespace Odcinek10
 {
     class Diary
     {
@@ -15,11 +15,17 @@ namespace StudentDiary
         }
         //Stan(zmienne - pola)
         List<float> ratings;
+        /// <summary>
+        /// adding ratings
+        /// </summary>
         //Zachowania
         public void addRating(float rating)
         {
             ratings.Add(rating);
         }
+        /// <summary>
+        /// calculating average of ratings
+        /// </summary>
         public float calculateAverage()
         {
             float sum = 0, avg = 0;
@@ -29,11 +35,17 @@ namespace StudentDiary
             }
             return avg = sum / ratings.Count();
         }
+        /// <summary>
+        /// getting minimum value 
+        /// </summary>
         public float getMinimum()
         {
             return ratings.Min();
 
         }
+        /// <summary>
+        /// getting maximum value 
+        /// </summary>
         public float getMaximum()
         {
             return ratings.Max();
