@@ -21,26 +21,9 @@ namespace StudentDiary
         static void Main(string[] args)
         {
 
-            //Diary diary = new Diary();
-
-            //diary.addRating(5);
-            //diary.addRating(8.5f);
-            //diary.addRating(4.7f);
-            //diary.addRating(11f);
-
-
-            //DiaryStatistics stats = diary.computeStatistics();
-
-            //Diary diary10 = new Diary();
-            //Diary diary5 = new Diary();
-            //Diary diary6 = new Diary();
-            //Diary diary7 = new Diary();
-            //Diary diary8 = new Diary();
-            //Diary diary9 = new Diary();
-
-            //Console.WriteLine(Diary.count);
-
             Diary d1 = new Diary();
+
+            //ref we have to initialize variable
             Diary d2 = d1;
             
 
@@ -48,7 +31,7 @@ namespace StudentDiary
             Diary d3 = d2;
             Console.WriteLine(d3.Name);
 
-
+            // out we don't have to initialize variable
             int x1;
             IncrementNUmber(out x1);
             Console.WriteLine(x1);
