@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudentDiary
 {
-    class Diary
+    public class Diary
     {
         public Diary()
         {
