@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Members;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,13 +15,39 @@ namespace StudentDiary
             ratings = new List<float>();
             count++;
         }
+
         //Stan(zmienne - pola)
         private List<float> ratings;
         public static float minGrade = 0;
         public static float maxGrade = 10;
         public static long count = 0;
-        public string Name;
+        private string _name;
+        public string Name
+        {
+            get
+            {
+                return _name.ToUpper();
+            }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    if (_name != value)
+                    {
+                        NameChangedEventArgs args = new NameChangedEventArgs();
+                        args.ExistingName = _name;
+                        args.NewName = value;
+                        NameChanged(this, args);
+                    }
 
+                    _name = value;
+
+                }
+            }
+        }
+
+        // Delegat
+        public event NameChangeDelegate NameChanged;
         //Zachowania
         public void addRating(float rating)
         {
@@ -28,6 +55,7 @@ namespace StudentDiary
             {
                 ratings.Add(rating);
             }
+
         }
         public DiaryStatistics computeStatistics()
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Members;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,37 +13,43 @@ namespace StudentDiary
         static void Main(string[] args)
         {
             Diary diary = new Diary();
-            diary.addRating(5.5f);
-            diary.addRating(6.5f);
-            diary.addRating(7.5f);
 
-            DiaryStatistics stats = diary.computeStatistics();
-            WriteResult("Average",stats.averageGrade,4,5,6,7);
-            WriteResult("Max Value", (int)stats.maxGrade);
-            WriteResult("Min Value", (long)stats.minGrade,2);
-            WriteResult("Min Value", (float)stats.minGrade,1);
+            diary.NameChanged += OnNameChanged;
+            diary.NameChanged += OnNameChanged2;
+            diary.NameChanged += OnNameChanged3;
+            diary.NameChanged += OnNameChanged3;
+            diary.NameChanged += OnNameChanged3;
+            diary.NameChanged += OnNameChanged3;
+            //diary.NameChanged -= OnNameChanged3;
+
+
+
+            diary.Name = "lol";
+            diary.Name = "sdad";
+
+
+
+
 
             Console.ReadKey();
         }
-        static void WriteResult(string description, params float[] result)
+
+        private static void OnNameChanged(object sender, NameChangedEventArgs args)
         {
-            Console.WriteLine(description + ": " + result[0] + " " + result[1] + " " + result[2] + " " + result[3]);
+            Console.WriteLine($"Zmiana nazwy z {args.ExistingName} na {args.NewName}");
         }
-        static void WriteResult(string description, int result)
+        private static void OnNameChanged2(object sender, NameChangedEventArgs args)
         {
-            Console.WriteLine(description + ": " + result);
+            Console.WriteLine("ssssssssss");
         }
-        static void WriteResult(string description, long result)
+        private static void OnNameChanged3(object sender, NameChangedEventArgs args)
         {
-            Console.WriteLine(description + ": " + result);
+            Console.WriteLine("helo");
         }
-        static void WriteResult(string description, float result, long test)
+        private static void OnNameChanged4(object sender, NameChangedEventArgs args)
         {
-            Console.WriteLine("{0}"+ ": " + "{1:F2},{2:},{3},{4}", description,result,1,2,3);
+            Console.WriteLine("+++");
         }
-        static void WriteResult(string description, long result, long test)
-        {
-            Console.WriteLine($"{description},{result:F2},{2},{3},{4}");
-        }
+
     }
 }
