@@ -21,28 +21,28 @@ namespace StudentDiary
         public static float minGrade = 0;
         public static float maxGrade = 10;
         public static long count = 0;
-        private string _name;
+        private string _name = "sdd";
         public string Name
         {
             get
             {
-                return _name.ToUpper();
+                return _name = "Get property is calling";
             }
             set
             {
-                if (!string.IsNullOrEmpty(value))
+                if (string.IsNullOrEmpty(value))
                 {
-                    if (_name != value)
-                    {
-                        NameChangedEventArgs args = new NameChangedEventArgs();
-                        args.ExistingName = _name;
-                        args.NewName = value;
-                        NameChanged(this, args);
-                    }
-
-                    _name = value;
-
+                    throw new ArgumentNullException("Name can not be empty");
                 }
+                if (_name != value && NameChanged != null)
+                {
+                    NameChangedEventArgs args = new NameChangedEventArgs();
+                    args.ExistingName = _name;
+                    args.NewName = value;
+                    NameChanged(this, args);
+                }
+                _name = value;
+
             }
         }
 
@@ -71,7 +71,7 @@ namespace StudentDiary
             stats.minGrade = ratings.Min();
 
             return stats;
-            
+
         }
     }
 }
